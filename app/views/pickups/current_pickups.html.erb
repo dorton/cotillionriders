@@ -1,0 +1,10 @@
+
+<div class="mdl-cards">
+  <% @current_pickups.each do |pickup| %>
+      <div class="mdl-card mdl-shadow--4dp">
+        <div class="mdl-card__media"><%= image_tag pickup.student.pic %></div>
+        <%= link_to 'Vote', @current_pickup, :method => :current_pickup, :remote=>true %>
+        <div class="mdl-card__supporting-text"><h4><%= link_to pickup.student.name, pickup.student %></h4></div>
+      </div>
+  <% end %>
+</div>

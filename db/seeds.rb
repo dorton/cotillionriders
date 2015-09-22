@@ -5,3 +5,60 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+require 'faker'
+
+def create_teacher
+  teacher = Teacher.new
+  teacher.name = Faker::Name.last_name
+  teacher.grade = Faker::Number.between(1, 5)
+  teacher.room = Faker::Number.between(100, 250)
+  teacher.save!
+  teacher
+end
+
+def create_user
+  user = User.new
+  user.first_name = Faker::Name.first_name
+  user.last_name = Faker::Name.last_name
+  user.phone = Faker::PhoneNumber.cell_phone
+  user.email = Faker::Internet.email
+  user.password = Faker::Internet.password
+  user.save!
+  user
+end
+
+def create_student(teacher)
+  student = Student.new
+  student.first_name = Faker::Name.first_name
+  student.last_name = Faker::Name.last_name
+  student.pic = Faker::Avatar.image
+  student.teacher = teacher
+  student.save!
+  student
+end
+
+# def create_pickup(student:, user:)
+#   pickup = Pickup.new
+#   pickup.current_pickup = [true, false].sample
+#   pickup.student = student
+#   pickup.user = user
+#   pickup.save!
+#   pickup
+# end
+
+
+# 10.times do
+#   create_teacher
+# end
+
+50.times do
+  dad  = create_user
+  mom  = create_user
+  [1, 2, 3, 4].sample.times do
+    little_bobby = create_student(Teacher.all.sample)
+    little_bobby.users << dad
+    little_bobby.users << mom
+  end
+
+end

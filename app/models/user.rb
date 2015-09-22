@@ -4,5 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :pickups
-  has_many :students, :through => :pickups 
+  has_many :students, :through => :pickups
+
+  def name
+    first_name + " " + last_name
+  end
 end

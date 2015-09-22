@@ -3,6 +3,15 @@ class UsersController < ApplicationController
 
   # GET /users
   # GET /users.json
+
+  def current_pickups
+    @current_pickups = Pickup.find
+  end
+
+  def current_user_home
+    redirect_to current_user
+  end
+
   def index
     @users = User.all
   end
