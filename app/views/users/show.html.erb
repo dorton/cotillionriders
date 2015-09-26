@@ -1,13 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= @user.first_name %> <%= @user.last_name %></h1>
+<h1>Parent: <%= @user.name %> </h1>
 
+<% if @user.students.count > 1 %>
 <h2>Students:</h2>
+<% else %>
+<h2>Student:</h2>
+<% end %>
 
+<div class="mdl-cards">
   <% @user.students.each do |student| %>
-    <h3><%= student.first_name %> <%= student.last_name %></h3>
-    <%= link_to image_tag(student.pic), student %>
+      <div class="mdl-card mdl-shadow--4dp">
+        <div class="mdl-card__media"><%= link_to(image_tag student.pic, class: "img-responsive") %></div>
+        <div class="mdl-card__title">
+          <div class="mdl-card__title-text"><h4><%= student.name %></h4></div>
+        </div>
+      </div>
   <% end %>
-<br>
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+</div>

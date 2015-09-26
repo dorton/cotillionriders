@@ -11,31 +11,43 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
+<form>
+
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <%= f.label :first_name, class: "mdl-textfield__label" %>
+    <%= f.text_field :first_name, class: "mdl-textfield__input" %>
   </div>
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <%= f.label :last_name, class: "mdl-textfield__label" %>
+    <%= f.text_field :last_name, class: "mdl-textfield__input" %>
   </div>
-  <div class="field">
-    <%= f.label :admin %><br>
-    <%= f.check_box :admin %>
+  <% if current_user.admin? %>
+  <div class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+    <%= f.label :admin, class: "mdl-checkbox__label" %>
+    <%= f.check_box :admin, class: "mdl-checkbox__input" %>
   </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
+  <% else %>
+  <% end %>
+  <br>
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <%= f.label :email, class: "mdl-textfield__label" %>
+    <%= f.text_field :email, class: "mdl-textfield__input" %>
   </div>
-  <div class="field">
-    <%= f.label :god_mode %><br>
-    <%= f.check_box :god_mode %>
+  <% if current_user.god_mode? %>
+  <div class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+    <%= f.label :god_mode, class: "mdl-checkbox__label" %>
+    <%= f.check_box :god_mode, class: "mdl-checkbox__input" %>
   </div>
-  <div class="field">
-    <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
+  <% else %>
+  <% end %>
+  <br>
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <%= f.label :phone, class: "mdl-textfield__label" %>
+    <%= f.text_field :phone, class: "mdl-textfield__input" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Update user", class: "mdl-button mdl-js-button mdl-button--raised" %>
   </div>
+</form>
+
 <% end %>

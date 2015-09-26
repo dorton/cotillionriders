@@ -1,10 +1,14 @@
+<h2 class="mdl-display-2">Students Ready for Pickup</h2>
 
 <div class="mdl-cards">
   <% @current_pickups.each do |pickup| %>
-      <div class="mdl-card mdl-shadow--4dp">
-        <div class="mdl-card__media"><%= image_tag pickup.student.pic %></div>
-        <%= link_to 'Vote', @current_pickup, :method => :current_pickup, :remote=>true %>
-        <div class="mdl-card__supporting-text"><h4><%= link_to pickup.student.name, pickup.student %></h4></div>
-      </div>
+    <button class="mdl-button mdl-js-button mdl-js-ripple-effect">
+        <div class="mdl-card mdl-shadow--4dp">
+          <div class="mdl-card__media"><%= image_tag pickup.student.pic %></div>
+          <div class="mdl-card__supporting-text"><h4><%= pickup.student.name %></h4></div>
+        </div>
+      </button>
   <% end %>
+
+
 </div>

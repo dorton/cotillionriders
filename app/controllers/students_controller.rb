@@ -4,12 +4,21 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
-    @students = Student.all
+    if current_user.admin?
+      @students = Student.all
+    else
+      redirect_to current_user
+    end
   end
 
   # GET /students/1
   # GET /students/1.json
   def show
+    if current_user.admin?
+      @student = Student.find(params[:id])
+    else
+      
+    end
   end
 
   # GET /students/new

@@ -4,21 +4,34 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
 
-  def current_pickups
-    @current_pickups = Pickup.find
-  end
-
   def current_user_home
-    redirect_to current_user
+    if current_user.god_mode?
+      redirect_to current_user
+    elsif current_user.admin?
+      redirect_to current_user
+    else
+      redirect_to current_user
+    end
   end
 
   def index
-    @users = User.all
+    if current_user.admin?
+      @users = User.all
+    else
+      redirect_to current_user
+    end
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+
+    unless current_user.admin?
+      @user = current_user
+    end
+    @students = @user.students.all
+    @current_pickup_false = Pickup.where(current_pickup: [false, nil])
+
   end
 
   # GET /users/new
@@ -28,6 +41,9 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    unless current_user.admin?
+      @user = current_user
+    end
   end
 
   # POST /users

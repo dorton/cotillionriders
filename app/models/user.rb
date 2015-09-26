@@ -7,6 +7,6 @@ class User < ActiveRecord::Base
   has_many :students, :through => :pickups
 
   def name
-    first_name + " " + last_name
+    "#{first_name} #{last_name}"
   end
 end

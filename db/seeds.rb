@@ -17,6 +17,10 @@ def create_teacher
   teacher
 end
 
+10.times do
+  create_teacher
+end
+
 def create_user
   user = User.new
   user.first_name = Faker::Name.first_name
@@ -38,21 +42,7 @@ def create_student(teacher)
   student
 end
 
-# def create_pickup(student:, user:)
-#   pickup = Pickup.new
-#   pickup.current_pickup = [true, false].sample
-#   pickup.student = student
-#   pickup.user = user
-#   pickup.save!
-#   pickup
-# end
-
-
-# 10.times do
-#   create_teacher
-# end
-
-50.times do
+300.times do
   dad  = create_user
   mom  = create_user
   [1, 2, 3, 4].sample.times do
@@ -60,5 +50,10 @@ end
     little_bobby.users << dad
     little_bobby.users << mom
   end
-
 end
+
+user = User.new
+user.email = 'brian.dorton@theironyard.com'
+user.password = '12345678'
+user.admin = 'true'
+user.save!
