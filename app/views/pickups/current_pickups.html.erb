@@ -1,14 +1,18 @@
-<h2 class="mdl-display-2">Students Ready for Pickup</h2>
+<h2 class="mdl-display-2"><%= @current_pickups.count %> Students Ready for Pickup</h2>
 
-<div class="mdl-cards">
+
+
+
+<div class="content-grid mdl-grid">
   <% @current_pickups.each do |pickup| %>
-    <button class="mdl-button mdl-js-button mdl-js-ripple-effect">
-        <div class="mdl-card mdl-shadow--4dp">
-          <div class="mdl-card__media"><%= image_tag pickup.student.pic %></div>
-          <div class="mdl-card__supporting-text"><h4><%= pickup.student.name %></h4></div>
-        </div>
-      </button>
+    <div class="mdl-card mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet mdl-shadow--4dp">
+      <figure class="mdl-card__media">
+        <%= image_tag pickup.student.pic %>
+      </figure>
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text"><%= pickup.student.name %></h2>
+      </div>
+      
+    </div>
   <% end %>
-
-
 </div>

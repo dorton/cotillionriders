@@ -160,8 +160,12 @@ background: #0277bd; // Light Blue 800  } */
 
 }
 
-.mdl-layout__header-row{
+.mdl-layout__header-row {
   background-color: rgb(57,71,78);
+}
+
+.mdl-layout__header {
+  background-color: rgb(57,71,78) !important;
 }
 
 .svg-white{

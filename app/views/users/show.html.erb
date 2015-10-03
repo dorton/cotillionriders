@@ -1,20 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Parent: <%= @user.name %> </h1>
 
-<% if @user.students.count > 1 %>
-<h2>Students:</h2>
-<% else %>
-<h2>Student:</h2>
-<% end %>
+    <h1>Parent: <%= @user.name %> </h1>
 
-<div class="mdl-cards">
-  <% @user.students.each do |student| %>
-      <div class="mdl-card mdl-shadow--4dp">
-        <div class="mdl-card__media"><%= link_to(image_tag student.pic, class: "img-responsive") %></div>
+    <% if @user.students.count > 1 %>
+    <h2>Students:</h2>
+    <% else %>
+    <h2>Student:</h2>
+    <% end %>
+
+
+
+    <div class="content-grid mdl-grid">
+      <% @user.students.each do |student| %>
+
+      <div class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-shadow--4dp">
+        <figure class="mdl-card__media">
+          <%= image_tag student.pic %>
+        </figure>
         <div class="mdl-card__title">
-          <div class="mdl-card__title-text"><h4><%= student.name %></h4></div>
+          <h2 class="mdl-card__title-text"><%= student.name %></h2>
         </div>
+
+        <div class="mdl-card__actions mdl-card--border">
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Pick Up</a>
+        </div>
+
       </div>
-  <% end %>
-</div>
+      <% end %>
+    </div>

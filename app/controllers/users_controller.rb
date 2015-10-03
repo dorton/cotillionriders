@@ -29,8 +29,7 @@ class UsersController < ApplicationController
     unless current_user.admin?
       @user = current_user
     end
-    @students = @user.students.all
-    @current_pickup_false = Pickup.where(current_pickup: [false, nil])
+  
 
   end
 

@@ -2,14 +2,25 @@
   display: flex;
   flex-wrap: wrap;
   flex-shrink: 1;
-  justify-content: center;
+
 }
 
 .mdl-card {
-  width: 200px;
-  margin: 5px;
+
 }
 
 .mdl-card__media{
   background-color: white !important;
+  margin: 0;
+}
+
+.mdl-button{
+}
+
+.mdl-card__media > img {
+  max-width: 100%;
+}
+
+.content-grid {
+  max-width: 1140px;
 }

@@ -2,10 +2,10 @@
 <html>
 <head>
   <title>CarRidersRails</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic&subset=latin,cyrillic" %>
-<!--  <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.brown-teal.min.css" /> 
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
+<!--  <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.brown-teal.min.css" />
 -->  <%= csrf_meta_tags %>
 </head>
 <body>
@@ -18,7 +18,7 @@
         <!-- Add spacer, to align navigation to the right -->
         <div class="mdl-layout-spacer"></div>
         <!-- Navigation. We hide it in small screens. -->
-        <nav class="mdl-navigation ">
+        <nav class="mdl-navigation mdl-layout--large-screen-only ">
           <% if user_signed_in? %>
           <% end %>
 
@@ -42,13 +42,39 @@
         </nav>
       </div>
     </header>
+    <% if user_signed_in? %>
+    <div class="mdl-layout__drawer mdl-layout--small-screen-only">
+        <span class="mdl-layout-title">CarRiders</span>
+        <nav class="mdl-navigation">
+          <% if user_signed_in? %>
+          <% end %>
 
+          <% if user_signed_in? %>
+            <% if current_user.admin? %>
+              <%= link_to('All Parents', users_path, class: "mdl-navigation__link") %>
+            <% end %>
 
+            <% if current_user.admin? %>
+              <%= link_to('Current Pickups', current_pickups_path, class: "mdl-navigation__link") %>
+            <% end %>
+            <% if current_user.admin? %>
+              <%= link_to('Admin', rails_admin_path, class: "mdl-navigation__link") %>
+            <% end %>
+            <%= link_to('My Account', edit_user_path(current_user), class: "mdl-navigation__link") %>
+          <% end %>
+
+          <% if user_signed_in? %>
+            <%= link_to('Logout', destroy_user_session_path, :method => :delete, class: "mdl-navigation__link" ) %>
+          <% end %>
+        </nav>
+      </div>
+<% end %>
 
 
 
 
     <main class="mdl-layout__content">
+
       <%= yield %>
     </main>
 
