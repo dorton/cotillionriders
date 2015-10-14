@@ -1,20 +1,7 @@
-.mdl-cards {
-  display: flex;
-  flex-wrap: wrap;
-  flex-shrink: 1;
-
-}
-
-.mdl-card {
-
-}
 
 .mdl-card__media{
   background-color: white !important;
   margin: 0;
-}
-
-.mdl-button{
 }
 
 .mdl-card__media > img {
@@ -22,5 +9,9 @@
 }
 
 .content-grid {
-  max-width: 1140px;
+  max-width: 1180px;
+}
+
+.pickup {
+  cursor: pointer;
 }

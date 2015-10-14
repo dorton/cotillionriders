@@ -29,6 +29,10 @@ gem 'rails_admin'
 
 gem 'faker'
 
+gem 'react-rails'
+
+gem 'therubyracer', platforms: :ruby
+
 # gem 'paper_trail'
 
 

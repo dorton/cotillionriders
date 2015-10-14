@@ -2,15 +2,17 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
 
-  resources :teachers
 
   # resources :students do
   #   resources :users
   # end
 
-  resources :users do
+  resources :users, except: :index do
     resources :students
   end
+
+  get '/api/pickups' => 'api/current_pickup#index'
+  post '/api/pickup/:id' => 'api/current_pickup#update'
 
 
   get '/current_pickups' => 'pickups#current_pickups'

@@ -1,18 +1,2 @@
-<h2 class="mdl-display-2"><%= @current_pickups.count %> Students Ready for Pickup</h2>
 
-
-
-
-<div class="content-grid mdl-grid">
-  <% @current_pickups.each do |pickup| %>
-    <div class="mdl-card mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet mdl-shadow--4dp">
-      <figure class="mdl-card__media">
-        <%= image_tag pickup.student.pic %>
-      </figure>
-      <div class="mdl-card__title">
-        <h2 class="mdl-card__title-text"><%= pickup.student.name %></h2>
-      </div>
-      
-    </div>
-  <% end %>
-</div>
+<%= react_component 'CurrentPickup', {current_pickups: @current_pickups} %>
