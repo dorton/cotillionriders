@@ -7,4 +7,8 @@ class Student < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  before_create do
+    self.pic = Faker::Avatar.image
+  end
+
 end

@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 20150915024339) do
   create_table "pickups", force: :cascade do |t|
     t.integer  "student_id"
     t.integer  "user_id"
-    t.boolean  "current_pickup"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.boolean  "current_pickup", default: false, null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "students", force: :cascade do |t|

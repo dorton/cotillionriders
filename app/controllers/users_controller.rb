@@ -4,6 +4,12 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
 
+  def set_pickup
+    @current_pickup = Pickup.find params[:id]
+    @current_pickup.update :current_pickup => :true
+  end
+
+
   def current_user_home
     if current_user.god_mode?
       redirect_to current_user
@@ -29,7 +35,7 @@ class UsersController < ApplicationController
     unless current_user.admin?
       @user = current_user
     end
-  
+
 
   end
 

@@ -1,31 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-
-    <h1>Parent: <%= @user.name %> </h1>
-
-    <% if @user.students.count > 1 %>
-    <h2>Students:</h2>
-    <% else %>
-    <h2>Student:</h2>
-    <% end %>
-
-
-
-    <div class="content-grid mdl-grid">
-      <% @user.students.each do |student| %>
-
-      <div class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-shadow--4dp">
-        <figure class="mdl-card__media">
-          <%= image_tag student.pic %>
-        </figure>
-        <div class="mdl-card__title">
-          <h2 class="mdl-card__title-text"><%= student.name %></h2>
-        </div>
-
-        <div class="mdl-card__actions mdl-card--border">
-            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Pick Up</a>
-        </div>
-
-      </div>
-      <% end %>
+<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+  <div class="mdl-tabs__tab-bar">
+        <a href="#mark_pickup-panel" class="mdl-tabs__tab is-active">Mark Ready For Pickup</a>
+        <a href="#adjust_pickup-panel" class="mdl-tabs__tab">Marked For Pickup</a>
     </div>
+    <div class="mdl-tabs__panel is-active" id="mark_pickup-panel">
+      <%= react_component 'MarkAsPickup' %>
+    </div>
+
+    <div class="mdl-tabs__panel" id="adjust_pickup-panel">
+      <%= react_component 'AdjustPickup' %>
+    </div>
+
+  </div>
+</div>

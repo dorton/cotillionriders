@@ -1,5 +1,4 @@
-var CurrentPickup = React.createClass({
-
+var AdjustPickup = React.createClass({
   getInitialState(){
     return {
       pickups: []
@@ -9,9 +8,8 @@ var CurrentPickup = React.createClass({
   fetchCurrentPickups(){
     var component = this;
 
-    $.getJSON("/api/pickups.json")
+    $.getJSON("/api/adjusts.json")
       .done(function(json){
-
         component.setState({ pickups: json.pickups });
       })
   },
@@ -31,14 +29,12 @@ var CurrentPickup = React.createClass({
     var node = this.refs["pickup-" + pickup.id].getDOMNode();
     $(node).hide("slow");
 
-    $.post("/api/pickup/" + pickup.id);
+    $.post("/api/adjusts/" + pickup.id);
   },
 
   pickups(){
     var component = this;
-    if (this.state.pickups.length === 0) {
-      return <img src="http://i.giphy.com/6HOkD1pSCne4E.gif"></img>
-    } else {
+
       return this.state.pickups.map(function(current_pickup){
         let pickupStudent = component.pickupStudentHandeler.bind(component, current_pickup)
         return <div ref={"pickup-" + current_pickup.id} key={current_pickup.id} className="pickup mdl-card mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet mdl-shadow--4dp" onClick={pickupStudent}>
@@ -48,11 +44,9 @@ var CurrentPickup = React.createClass({
           <div className="mdl-card__title">
             <div className="mdl-card__title-text">{current_pickup.student_name}</div>
           </div>
-          <div className="mdl-card__subtitle-text">Parent: {current_pickup.parent}</div>
-
         </div>
       })
-    }
+
   },
 
 
@@ -62,7 +56,7 @@ var CurrentPickup = React.createClass({
 
 
     return  <div>
-      <h2 class="mdl-display-2">{this.state.pickups.length} Student(s) Ready for Pickup</h2>
+      <h2 class="mdl-display-2">You have {this.state.pickups.length} Child(ren) Who Have Been Marked For Pickup</h2>
       <div className="content-grid mdl-grid">
         {this.pickups()}
       </div>

@@ -14,6 +14,14 @@ Rails.application.routes.draw do
   get '/api/pickups' => 'api/current_pickup#index'
   post '/api/pickup/:id' => 'api/current_pickup#update'
 
+  get 'api/setpickups' => 'api/setpickup#index'
+  post '/api/setpickups/:id' => 'api/setpickup#update'
+
+
+  get 'api/adjusts' => 'api/setpickup#adjust'
+  post '/api/adjusts/:id' => 'api/setpickup#adjustpickup'
+
+
 
   get '/current_pickups' => 'pickups#current_pickups'
   # The priority is based upon order of creation: first created -> highest priority.
