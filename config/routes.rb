@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   get 'api/adjusts' => 'api/setpickup#adjust'
   post '/api/adjusts/:id' => 'api/setpickup#adjustpickup'
 
+  get 'api/parents' => 'api/user_form#parents'
+  get 'api/parent' => 'api/user_form#parent'
+
 
 
   get '/current_pickups' => 'pickups#current_pickups'
