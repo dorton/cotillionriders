@@ -49,6 +49,7 @@ class UsersController < ApplicationController
     unless current_user.admin?
       @user = current_user
     end
+    
   end
 
   # POST /users

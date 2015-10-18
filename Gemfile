@@ -33,7 +33,9 @@ gem 'react-rails'
 
 gem 'therubyracer', platforms: :ruby
 
-# gem 'paper_trail'
+gem 'paper_trail', '~> 4.0.0'
+
+gem "twitter-bootstrap-rails"
 
 
 
