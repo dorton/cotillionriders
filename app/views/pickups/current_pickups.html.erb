@@ -1,2 +1,4 @@
-
-<%= react_component 'CurrentPickup' %>
+<%= react_component('CurrentPickup', {pickupProps: @current_pickups})%>
+<% # 2nd argument of react_component are passed in as `props` into your React component
+   # ..... this can be used as a starting point for the data in your react app
+%>

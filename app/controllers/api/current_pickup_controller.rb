@@ -1,7 +1,7 @@
 class Api::CurrentPickupController < ApplicationController
 
   def index
-    @current_pickups = Pickup.where(current_pickup: "true")
+    @current_pickups = Pickup.where(current_pickup: "true").order('updated_at ASC')
   end
 
 

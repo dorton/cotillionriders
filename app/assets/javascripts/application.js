@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap/modal
+//= require twitter/bootstrap
 //= require material
 //= require react
 //= require react_ujs

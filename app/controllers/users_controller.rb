@@ -12,9 +12,9 @@ class UsersController < ApplicationController
 
   def current_user_home
     if current_user.god_mode?
-      redirect_to current_user
+      redirect_to rails_admin_path
     elsif current_user.admin?
-      redirect_to current_user
+      redirect_to current_pickups_path
     else
       redirect_to current_user
     end
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
     unless current_user.admin?
       @user = current_user
     end
-    
+
   end
 
   # POST /users
@@ -59,8 +59,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
+        format.html { redirect_to edit_user_path(:id), notice: 'User was successfully created.' }
+        format.json { render :show, status: :created, location: edit_user_path(:id) }
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }

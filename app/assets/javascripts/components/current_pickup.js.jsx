@@ -2,7 +2,7 @@ var CurrentPickup = React.createClass({
 
   getInitialState(){
     return {
-      pickups: []
+      pickups: this.props.pickupProps
     }
   },
 
@@ -58,7 +58,6 @@ var CurrentPickup = React.createClass({
 
   render: function() {
     var component = this;
-
 
 
     return  <div>
