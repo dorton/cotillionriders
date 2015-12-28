@@ -7,9 +7,11 @@ var MarkAsPickup = React.createClass({
     },
 
     fetchCurrentPickups(){
+      let searchQuery = this.refs.search.getDOMNode().value;
+
       var component = this;
 
-      $.getJSON("/api/setpickups.json")
+      $.getJSON("/api/setpickups.json?q=" + searchQuery)
         .done(function(json){
 
           component.setState({ pickups: json.pickups });
@@ -51,14 +53,20 @@ var MarkAsPickup = React.createClass({
 
     },
 
+  handleChange() {
+      this.props.onUserInput(
+          // this.refs.filterTextInput.value,
+      );
+  },
+
 
     render: function() {
       var component = this;
-
-
-
       return  <div>
-        <h2 class="mdl-display-2">You have {this.state.pickups.length} Child(ren) Ready for Pickup</h2>
+        <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label content-grid mdl-grid">
+          <input type="text" ref="search" className="mdl-textfield__input search" placeholder="Search..."></input>
+        </div>
+
         <div className="content-grid mdl-grid">
           {this.pickups()}
         </div>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CarRidersRails</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-color--grey-100">
+  <main class="mdl-layout__content">
+    <%= yield %>
+  </main>
+</body>
+<footer class="mdl-mini-footer">
+  <div class="mdl-mini-footer__right-section">
+    <ul class="mdl-mini-footer__link-list">
+      <li> <% if user_signed_in? %>
+            <%= link_to('Logout', destroy_user_session_path, :method => :delete, class: "mdl-navigation__link" ) %>
+          <% end %></li>
+    </ul>
+  </div>
+</footer>
+</div>
+
+</html>

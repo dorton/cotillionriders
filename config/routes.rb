@@ -3,13 +3,14 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "registrations" }
 
 
-  # resources :students do
-  #   resources :users
-  # end
+resources :users, except: :index
+    resources :students do
+      collection { post :import }
+    end
 
-  resources :users, except: :index do
-    resources :students
-  end
+
+resources :teachers
+
 
   get '/api/pickups' => 'api/current_pickup#index'
   post '/api/pickup/:id' => 'api/current_pickup#update'
@@ -25,7 +26,7 @@ Rails.application.routes.draw do
   get 'api/parent' => 'api/user_form#parent'
 
 
-
+  get '/schooladmin' => 'students#index', as: :school_admin
   get '/current_pickups' => 'pickups#current_pickups'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

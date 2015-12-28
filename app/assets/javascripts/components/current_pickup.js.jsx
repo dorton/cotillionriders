@@ -37,7 +37,7 @@ var CurrentPickup = React.createClass({
   pickups(){
     var component = this;
     if (this.state.pickups.length === 0) {
-      return <img src="http://i.giphy.com/6HOkD1pSCne4E.gif"></img>
+      return <div className="mdl-layout center"><h1>Waiting for Students</h1></div>
     } else {
       return this.state.pickups.map(function(current_pickup){
         let pickupStudent = component.pickupStudentHandeler.bind(component, current_pickup)
@@ -48,7 +48,6 @@ var CurrentPickup = React.createClass({
           <div className="mdl-card__title">
             <div className="mdl-card__title-text">{current_pickup.student_name}</div>
           </div>
-          <div className="mdl-card__subtitle-text">Parent: {current_pickup.parent}</div>
 
         </div>
       })
@@ -61,7 +60,6 @@ var CurrentPickup = React.createClass({
 
 
     return  <div>
-      <h2 class="mdl-display-2">{this.state.pickups.length} Student(s) Ready for Pickup</h2>
       <div className="content-grid mdl-grid">
         {this.pickups()}
       </div>

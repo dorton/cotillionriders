@@ -1,7 +1,14 @@
 class Api::SetpickupController < ApplicationController
 
+
   def index
-    @setpickups = Pickup.where(user_id: current_user.id, current_pickup: false)
+
+
+      @setpickups = Pickup.where(user_id: current_user.id, current_pickup: false)
+      if params[:q].present?
+        @setpickups = @setpickups.search(params[:q])
+      end
+
   end
 
   def update

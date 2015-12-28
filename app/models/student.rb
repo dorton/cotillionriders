@@ -9,6 +9,14 @@ class Student < ActiveRecord::Base
 
   before_create do
     self.pic = Faker::Avatar.image
+    self.users << User.where(carpool: true)
+  end
+
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      student = find_by_id(row["id"]) || new
+      student.save!
+    end
   end
 
 end

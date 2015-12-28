@@ -37,6 +37,11 @@ gem 'paper_trail', '~> 4.0.0'
 
 gem "twitter-bootstrap-rails"
 
+gem 'roo'
+
+gem 'simple_form'
+
+gem 'pg_search'
 
 
 # Use ActiveModel has_secure_password

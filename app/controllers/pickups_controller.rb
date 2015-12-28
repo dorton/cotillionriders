@@ -1,11 +1,18 @@
 class PickupsController < ApplicationController
 
   def current_pickups
-    if current_user.admin?
+    if current_user.gym?
       @current_pickups = Pickup.where(current_pickup: "true")
-    else
+  elsif current_user.admin?
+      @current_pickup = Pickup.where(current_pickup: "true")
+  else
       redirect_to current_user
     end
+
+    if current_user.gym?
+      render :layout => 'gym'
+    end
+
 
   end
 

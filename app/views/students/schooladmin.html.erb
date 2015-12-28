@@ -1,0 +1,45 @@
+<h1>School Admin Page</h1>
+
+<% @carpools.each do |carpool| %>
+  <%= carpool.name %>
+<% end %>
+
+
+<br>
+
+<h2>Students</h2>
+<table>
+  <tr>
+    <th>
+      First Name
+    </th>
+    <th>
+      Last Name
+    </th>
+    <th>
+      Action
+    </th>
+  </tr>
+  <% @students.each do |student| %>
+  <tr>
+      <td>
+        <%= student.first_name %>
+      </td>
+       <td>
+         <%= student.last_name %>
+       </td>
+       <td>
+         <%= link_to 'Delete', student, method: :delete, data: { confirm: 'Are you sure?' } %>
+       </td>
+    <% end %>
+  </tr>
+</table>
+
+
+<br>
+<h2>Import Students</h2>
+
+<%= form_tag import_students_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag("Import", :id=>"button", :class=>"mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent") %>
+<% end %>

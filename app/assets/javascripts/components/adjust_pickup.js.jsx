@@ -56,7 +56,6 @@ var AdjustPickup = React.createClass({
 
 
     return  <div>
-      <h2 class="mdl-display-2">You have {this.state.pickups.length} Child(ren) Who Have Been Marked For Pickup</h2>
       <div className="content-grid mdl-grid">
         {this.pickups()}
       </div>

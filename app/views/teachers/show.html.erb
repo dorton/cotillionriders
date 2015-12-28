@@ -1,19 +1,24 @@
 <p id="notice"><%= notice %></p>
 
+<h1><%= @teacher.name %> - <%= @teacher.grade %></h1>
+
+<h2>Students:</h2>
 <p>
-  <strong>Name:</strong>
-  <%= @teacher.name %>
+  <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" >
+    <tr>
+      <th class="mdl-data-table__cell--non-numeric">Name</th>
+    </tr>
+    <% @students.each do |student| %>
+    <tr>
+        <td class="mdl-data-table__cell--non-numeric">
+          <%= link_to student.name, student %>
+        </td>
+      <% end %>
+    </tr>
+  </table>
 </p>
 
-<p>
-  <strong>Grade:</strong>
-  <%= @teacher.grade %>
-</p>
 
-<p>
-  <strong>Room:</strong>
-  <%= @teacher.room %>
-</p>
 
-<%= link_to 'Edit', edit_teacher_path(@teacher) %> |
-<%= link_to 'Back', teachers_path %>
+<%= link_to 'Edit ' "#{@teacher.name}", edit_teacher_path(@teacher) %> |
+<%= link_to 'Back', root_path %>

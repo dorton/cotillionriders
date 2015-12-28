@@ -9,6 +9,8 @@ class StudentsController < ApplicationController
     else
       redirect_to current_user
     end
+    @carpools = User.where(carpool: true)
+    @teachers = Teacher.all
   end
 
   # GET /students/1
@@ -33,13 +35,12 @@ class StudentsController < ApplicationController
   # POST /students
   # POST /students.json
   def create
-    @user = User.find(params[:user_id])
-    @student = @user.students.create(student_params)
+    @student = Student.create(student_params)
 
 
     respond_to do |format|
       if @student.save
-        format.html { redirect_to edit_user_path(@user), notice: 'Student was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Student was successfully created.' }
         # format.json { render :show, status: :created, location: @student }
       else
         format.html { render :new }
@@ -71,6 +72,16 @@ class StudentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def schooladmin
+    @students = Student.all
+  end
+
+  def import
+    Student.import(params[:file])
+    redirect_to root_url, notice: "Students imported."
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -9,4 +9,15 @@ class User < ActiveRecord::Base
   def name
     "#{first_name} #{last_name}"
   end
+
+  before_create :add_students_to_carpool
+
+  def add_students_to_carpool
+    if self.carpool?
+      self.students << Student.all
+    end
+  end
+
+
+
 end

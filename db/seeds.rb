@@ -8,6 +8,47 @@
 
 require 'faker'
 
+def create_gym
+  user = User.new
+  user.last_name = 'User'
+  user.first_name = 'Gym'
+  user.email = 'gym@123.com'
+  user.password = '12345678'
+  user.gym = 'true'
+  user.save!
+  user
+end
+
+create_gym
+
+def create_carpool_user
+  user = User.new
+  user.last_name = Faker::Name.last_name
+  user.first_name = Faker::Name.first_name
+  user.email = Faker::Internet.email
+  user.password = '12345678'
+  user.carpool = 'true'
+  user.save!
+  user
+end
+
+def create_default_user
+  user = User.new
+  user.last_name = 'Pool'
+  user.first_name = 'Car'
+  user.email = 'carpool@123.com'
+  user.password = '12345678'
+  user.carpool = 'true'
+  user.save!
+  user
+end
+
+3.times do
+  create_carpool_user
+end
+
+create_default_user
+
 def create_teacher
   teacher = Teacher.new
   teacher.name = Faker::Name.last_name
@@ -42,7 +83,7 @@ def create_student(teacher)
   student
 end
 
-300.times do
+30.times do
   dad  = create_user
   mom  = create_user
   [1, 2, 3, 4].sample.times do
