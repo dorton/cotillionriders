@@ -7,7 +7,7 @@ class Pickup < ActiveRecord::Base
   include PgSearch
   pg_search_scope :search, :associated_against => {
     :student => [:first_name, :last_name],
-    :user => [:first_name, :last_name]
+    :user => [:first_name, :last_name],
   },
   :using => {:tsearch => {:prefix => true}}
 end

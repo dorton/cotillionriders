@@ -34,6 +34,10 @@ var MarkAsPickup = React.createClass({
       $(node).hide("slow");
 
       $.post("/api/setpickups/" + pickup.id);
+
+      document.getElementById("search").value = '';
+
+
     },
 
     pickups(){
@@ -64,7 +68,7 @@ var MarkAsPickup = React.createClass({
       var component = this;
       return  <div>
         <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label content-grid mdl-grid">
-          <input type="text" ref="search" className="mdl-textfield__input search" placeholder="Search..."></input>
+          <input type="text" ref="search" className="mdl-textfield__input search" placeholder="Search..." id="search"></input>
         </div>
 
         <div className="content-grid mdl-grid">

@@ -33,6 +33,12 @@
     <%= f.label :email, class: "mdl-textfield__label" %>
     <%= f.text_field :email, class: "mdl-textfield__input" %>
   </div>
+
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <%= f.label :password, class: "mdl-textfield__label" %>
+    <%= f.text_field :password, class: "mdl-textfield__input" %>
+  </div>
+
   <% if current_user.god_mode? %>
   <div class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
     <%= f.label :god_mode, class: "mdl-checkbox__label" %>
