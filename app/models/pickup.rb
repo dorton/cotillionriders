@@ -10,4 +10,8 @@ class Pickup < ActiveRecord::Base
     :user => [:first_name, :last_name],
   },
   :using => {:tsearch => {:prefix => true}}
+
+  def student_last_name
+    self.student.last_name
+  end
 end

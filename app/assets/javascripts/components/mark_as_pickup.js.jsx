@@ -34,6 +34,11 @@ var MarkAsPickup = React.createClass({
       $(node).hide("slow");
 
       $.post("/api/setpickups/" + pickup.id);
+      //
+      // var interval = setInterval(doStuff, 2000); // 4000 ms = start after 4sec
+      //   function doStuff() {
+      //     document.getElementById("search").value = '';
+      // }
 
       document.getElementById("search").value = '';
 

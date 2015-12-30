@@ -4,7 +4,7 @@ class Api::SetpickupController < ApplicationController
   def index
 
 
-      @setpickups = Pickup.where(user_id: current_user.id, current_pickup: false)
+      @setpickups = Pickup.where(user_id: current_user.id, current_pickup: false).order('updated_at DESC')
       if params[:q].present?
         @setpickups = @setpickups.search(params[:q])
       end
@@ -24,7 +24,7 @@ class Api::SetpickupController < ApplicationController
 
 
   def adjust
-    @adjusts = Pickup.where(user_id: current_user.id, current_pickup: true)
+    @adjusts = Pickup.where(user_id: current_user.id, current_pickup: true).order('updated_at ASC')
   end
 
   def adjustpickup

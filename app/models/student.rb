@@ -1,6 +1,6 @@
 class Student < ActiveRecord::Base
   belongs_to :teacher
-  has_many :pickups
+  has_many :pickups, dependent: :destroy
   has_many :users, :through => :pickups
 
   def name
@@ -13,9 +13,8 @@ class Student < ActiveRecord::Base
   end
 
   def self.import(file)
-    CSV.foreach(file.path, headers: true) do |row|
-      student = find_by_id(row["id"]) || new
-      student.save!
+    CSV.foreach(file.path, :headers => true) do |row|
+      Student.create!(row.to_hash)
     end
   end
 
