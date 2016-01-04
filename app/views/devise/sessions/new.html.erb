@@ -26,8 +26,8 @@
         <%= f.password_field :password, autocomplete: "off", class: "mdl-textfield__input" %>
       </div>
       <% if devise_mapping.rememberable? -%>
-        <div class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-          <%= f.check_box :remember_me, class: "mdl-checkbox__input" %>
+        <div class="mdl-checkbox mdl-js-checkbox">
+          <%= f.check_box :remember_me, class: "mdl-checkbox__input", checked: true %>
           <%= f.label :remember_me, class: "mdl-checkbox__label"  %>
         </div>
       <% end -%>
