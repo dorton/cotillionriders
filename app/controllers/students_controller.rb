@@ -19,8 +19,10 @@ class StudentsController < ApplicationController
     if current_user.admin?
       @student = Student.find(params[:id])
     else
-
     end
+
+    @pickups = Pickup.where(student_id: @student)
+
   end
 
   # GET /students/new

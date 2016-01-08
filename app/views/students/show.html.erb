@@ -4,13 +4,25 @@
 
 <h1><%= @student.name %></h1>
 
-<br>
-
-<% @student.users.each do |user| %>
-  <%= link_to user.name, user %>
-<% end %>
 
 <br>
 
-<%= link_to 'Edit', edit_student_path(@student) %> |
-<%= link_to 'Back', students_path %>
+<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+  <tr>
+    <th class="mdl-data-table__cell--non-numeric">Date</th>
+    <th class="mdl-data-table__cell--non-numeric">Time</th>
+    <th class="mdl-data-table__cell--non-numeric">Whodunnit</th>
+    <th class="mdl-data-table__cell--non-numeric">Changes</th>
+
+  </tr>
+  <% @pickups.each do |pickup| %>
+    <% pickup.versions.each do |version| %>
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric"><%= version.created_at.strftime('%A, %d %b %Y') %></td>
+      <td class="mdl-data-table__cell--non-numeric"><%= version.created_at.strftime('%l:%M %p') %></td>
+      <td class="mdl-data-table__cell--non-numeric"><%= version.whodunnit %></td>
+      <td class="mdl-data-table__cell--non-numeric"><%= version.object_changes %></td>
+      <% end %>
+    <% end %>
+    </tr>
+</table>

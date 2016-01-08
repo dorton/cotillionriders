@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def current_user_home
     if current_user.god_mode?
-      redirect_to rails_admin_path
+      redirect_to school_admin_path
     elsif current_user.admin?
       redirect_to school_admin_path
     elsif current_user.gym?

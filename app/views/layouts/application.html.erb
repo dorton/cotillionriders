@@ -58,14 +58,14 @@
           <% if user_signed_in? %>
 
             <% if current_user.admin? %>
-              <%= link_to('Current Pickups', current_pickups_path, class: "mdl-navigation__link") %>
+              <%= link_to('Gym View', current_pickups_path, class: "mdl-navigation__link") %>
             <% end %>
-            <% if current_user.admin? %>
+            <% if current_user.god_mode? %>
               <%= link_to('Admin', rails_admin_path, class: "mdl-navigation__link") %>
             <% end %>
-            <% if current_user.admin? %>
-              <%= link_to('My Account', edit_user_path(current_user), class: "mdl-navigation__link") %>
-            <% end %>
+           <% if current_user.admin? %>
+            <%= link_to('Carpool View', user_path(current_user), class: "mdl-navigation__link") %>
+          <% end %>
           <% end %>
 
           <% if user_signed_in? %>
@@ -84,13 +84,13 @@
           <% if user_signed_in? %>
 
             <% if current_user.admin? %>
-              <%= link_to('Current Pickups', current_pickups_path, class: "mdl-navigation__link") %>
+              <%= link_to('Gym View', current_pickups_path, class: "mdl-navigation__link") %>
             <% end %>
-            <% if current_user.admin? %>
+            <% if current_user.god_mode? %>
               <%= link_to('Admin', rails_admin_path, class: "mdl-navigation__link") %>
             <% end %>
             <% if current_user.admin? %>
-              <%= link_to('My Account', edit_user_path(current_user), class: "mdl-navigation__link") %>
+              <%= link_to('Carpool View', user_path(current_user), class: "mdl-navigation__link") %>
             <% end %>
           <% end %>
 

@@ -4,7 +4,7 @@ class PickupsController < ApplicationController
     if current_user.gym?
       @current_pickups = Pickup.where(current_pickup: "true")
   elsif current_user.admin?
-      @current_pickup = Pickup.where(current_pickup: "true")
+      @current_pickups = Pickup.where(current_pickup: "true")
   else
       redirect_to current_user
     end

@@ -2,13 +2,8 @@ class Api::SetpickupController < ApplicationController
 
 
   def index
-
-
       @setpickups = Pickup.joins(:student).where(user_id: current_user.id, current_pickup: false).order('last_name, first_name')
-      if params[:q].present?
-        @setpickups = @setpickups.search(params[:q])
-      end
-
+      @setpickups = @setpickups.search(params[:q]) if params[:q].present?
   end
 
   def update
