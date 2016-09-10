@@ -1,2 +1,2 @@
-![](https://github.com/dorton/CarRidersRails/blob/master/erd.pdf)
- 
+
+![](https://dl.dropboxusercontent.com/1/view/cxvoh5f8xgvm16w/Public/carriders.gif)
