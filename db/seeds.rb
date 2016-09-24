@@ -104,16 +104,15 @@ def create_admin
   user
 end
 
-def create_parent
-  user = User.new
-  user.last_name = 'Dorton'
-  user.first_name = 'Kristen'
-  user.email = '123@123.com'
-  user.password = '12345678'
-  user.admin = 'true'
-  user.save!
-  user
-end
+# def create_parent
+#   user = User.new
+#   user.last_name = 'Dorton'
+#   user.first_name = 'Kristen'
+#   user.email = '123@123.com'
+#   user.password = '12345678'
+#   user.admin = 'true'
+#   user.save!
+#   user
+# end
 
 dad = create_admin
-mom = create_parent

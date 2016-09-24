@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CarRiders</title>
+  <title>CotillionRiders</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
@@ -47,7 +47,7 @@
       <div class="mdl-layout__header-row">
         <!-- Title -->
         <button class="mdl-button mdl-button--icon"><%= link_to(image_tag('icons.svg', class: 'svg-white'), root_path) %></button>
-        <span><%= link_to('CarRiders', root_path, class: "mdl-layout-title mdl-navigation__link") %></span>
+        <span><%= link_to('CotillionRiders', root_path, class: "mdl-layout-title mdl-navigation__link") %></span>
         <!-- Add spacer, to align navigation to the right -->
         <div class="mdl-layout-spacer"></div>
         <!-- Navigation. We hide it in small screens. -->
@@ -76,7 +76,7 @@
     </header>
     <% if user_signed_in? %>
     <div class="mdl-layout__drawer mdl-layout--small-screen-only">
-        <span class="mdl-layout-title">CarRiders</span>
+        <span class="mdl-layout-title">CotillionRiders</span>
         <nav class="mdl-navigation">
           <% if user_signed_in? %>
           <% end %>
